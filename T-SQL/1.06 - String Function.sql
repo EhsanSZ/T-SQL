@@ -196,8 +196,7 @@ FROM dbo.Customers;
 GO
 
 /*
-:تمرین کلاسی
-.کوئری بالا را با استفاده از + بازنویسی کنید
+.بازنویسی کوئری بالا را با استفاده از + 
 */
 SELECT 
 	CustomerID, State, Region, City,

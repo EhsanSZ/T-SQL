@@ -1,4 +1,4 @@
-﻿USE NikamoozDB;
+﻿USE Test_DB;
 GO
 
 /*

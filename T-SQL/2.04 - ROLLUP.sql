@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
 ROLLUP
 
 ROLLUP (A,B,C):
@@ -9,7 +8,6 @@ ROLLUP (A,B,C):
 ()
 
 */
-
 USE Test_DB;
 GO
 

@@ -1,17 +1,14 @@
-﻿
-USE Test_DB;
+﻿USE Test_DB;
 GO
 
 /*
 GROUP BY و DISTINCT تشابه عملیات
 */
-
 -- DISTINCT
 SELECT
 	 DISTINCT EmployeeID, CustomerID
 FROM dbo.Orders;
 GO
-
 -- GROUP BY
 SELECT
 	EmployeeID, CustomerID

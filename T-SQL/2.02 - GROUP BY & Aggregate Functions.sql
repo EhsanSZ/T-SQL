@@ -1,13 +1,9 @@
-﻿
-USE Test_DB;
+﻿USE Test_DB;
 GO
- 
 --------------------------------------------------------------------
-
 /*
  گروه‌بندی تک سطحی
 */
-
 -- تعداد سفارش هر مشتری
 -- GROUP BY Columns: CustomerID
 -- Aggregate Columns: OrderID
@@ -19,8 +15,6 @@ GROUP BY CustomerID;
 GO
 
 -- تعداد سفارش هر مشتری و جدیدترین سفارشش
--- GROUP BY Columns: CustomerID
--- Aggregate Columns: OrderID \ OrderDate
 SELECT
 	CustomerID,
 	COUNT(OrderID) AS Num,
@@ -34,8 +28,6 @@ GO
 گروه‌بندی چند سطحی
 */
 -- از هر استان-شهر چه تعداد مشتری داریم
--- GROUP BY Columns: State, City
--- Aggregate Columns: CustomerID
 SELECT
 	State, City,
 	COUNT(CustomerID) AS Num
@@ -45,7 +37,8 @@ GO
 --------------------------------------------------------------------
 
 /*
-سفارشات هر کارمند به تفکیک هر سال که شامل تعداد کل سفارش و مجموع کرایه‌های ثبت شده
+سفارشات هر کارمند به تفکیک هر سال که
+شامل تعداد کل سفارش و مجموع کرایه‌های ثبت شده
 */
 
 SELECT

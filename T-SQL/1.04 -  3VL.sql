@@ -15,6 +15,7 @@ FROM dbo.Customers
 	WHERE Region <> N'جنوب';
 GO
 
+
 -- !درست نیست NULL = NULL عبارت
 SELECT 
 	CustomerID, State, Region, City
@@ -28,6 +29,7 @@ SELECT
 FROM dbo.Customers
 	WHERE NOT (Region) = NULL;
 GO
+
 
 -- .است NULL آن‌ها برابر با Region فهرست مشتریانی که مقدار فیلد
 SELECT 
@@ -43,7 +45,8 @@ FROM dbo.Customers
 	WHERE Region IS NOT NULL;
 GO
 
----???
+
+
 -- .آن‌ها صرفا جنوب نیست Region فهرست مشتریانی که مقدار فیلد
 SELECT 
 	CustomerID, State, Region, City
@@ -51,6 +54,7 @@ FROM dbo.Customers
 	WHERE Region <> N'جنوب'
 	OR Region IS NULL;
 GO
+
 --------------------------------------------------------------------
 
 /*
@@ -63,7 +67,6 @@ DECLARE @str1 VARCHAR(100) = NULL;
 SELECT  ISNULL(@str1,'AAAAAAAAAAA');
 GO
 
----???
 -- .آن‌ها صرفا جنوب نیست Region فهرست مشتریانی که مقدار فیلد
 SELECT 
 	CustomerID, State, Region, City

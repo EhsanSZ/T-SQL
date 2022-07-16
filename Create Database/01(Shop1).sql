@@ -130,31 +130,6 @@ FOREIGN KEY(StateCode,CityCode) REFERENCES Geographics.City(StateCode,CityCode)
 	ON DELETE  NO ACTION 
 GO
 
------------------------------------------------------------------------
-
---Web Information ایجاد جدول 
-CREATE TABLE Customer.WebInformation
-(
-	-- یک سطر در جدول مشتری برای اشخاصی که ثبت نام نکردن بزار که این جا به مشکل نخوری
-	InfoID INT IDENTITY(1,1) NOT NULL,
-	CustomerID INT NOT NULL,
-	-- IP
-	-- Browser
-	-- Version
-	-- Operating System
-	--اطلاعات لازمه رو در بیار 
-)
-GO
---اضافه شدن کلید اصلی به جدول
-ALTER TABLE Customer.WebInformation ADD CONSTRAINT PK_InfoID
-PRIMARY KEY CLUSTERED (InfoID)
-GO
---Customer.Customer و Customer.WebInformation ایجاد ارتباط بین جدول 
-ALTER TABLE Customer.WebInformation ADD CONSTRAINT FK_WebInformation_Customer
-FOREIGN KEY(CustomerID) REFERENCES Customer.Customer(CustomerID)
-	ON UPDATE  NO ACTION 
-	ON DELETE  NO ACTION 
-GO
 
 -----------------------------------------------------------------------
 
@@ -177,9 +152,12 @@ CREATE TABLE Production.Product
 (
 	ProductID INT IDENTITY(1,1) NOT NULL,
 	ProductName NVARCHAR(200) NOT NULL,
+	Title NVARCHAR(350) NOT NULL,
+	ShortDescription NVARCHAR(500) NOT NULL,
 	ProductCategoryCode TINYINT NOT NULL,
 	Price BIGINT ,
-	ProductImage VARBINARY(MAX)
+	ProductImage VARBINARY(MAX),
+	CreateDate DATETIME NOT NULL
 )
 GO
 --اضافه شدن کلید اصلی به جدول
@@ -263,11 +241,43 @@ FOREIGN KEY(ProductID) REFERENCES Production.Product(ProductID)
 	ON DELETE  NO ACTION 
 GO
 
------------------------------------------------------------------------
 
----- ایجاد جدول خطاها یا استفاده از ELMAH
---CREATE TABLE Customer.Error
+
+
+
+--CREATE TABLE Product_Galleries
 --(
-   --
+--	GalleryID int IDENTITY(1,1) NOT NULL,
+--	ProductID int NOT NULL,
+--	ImageName varchar(50) NOT NULL
 --)
+--GO
+
+--ALTER TABLE Product_Galleries ADD CONSTRAINT PK_GalleryID
+--PRIMARY KEY CLUSTERED (GalleryID)
+--GO
+
+--ALTER TABLE Product_Galleries ADD CONSTRAINT FK_Product_Galleries_Products 
+--FOREIGN KEY(ProductID) REFERENCES Products (ProductID)
+--	ON UPDATE  NO ACTION 
+--	ON DELETE  NO ACTION 
+--GO
+
+
+--CREATE TABLE Product_Tags
+--(
+--	TagID int IDENTITY(1,1) NOT NULL,
+--	ProductID int NOT NULL,
+--	Tag nvarchar(250) NOT NULL
+--)
+--GO
+
+--ALTER TABLE Product_Tags ADD CONSTRAINT PK_TagID
+--PRIMARY KEY CLUSTERED (TagID)
+--GO
+
+--ALTER TABLE Product_Tags ADD CONSTRAINT FK_Product__Tags_Products 
+--FOREIGN KEY(ProductID) REFERENCES Products (ProductID)
+--	ON UPDATE  NO ACTION 
+--	ON DELETE  NO ACTION 
 --GO

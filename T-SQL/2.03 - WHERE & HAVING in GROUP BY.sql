@@ -1,5 +1,4 @@
-﻿
-USE Test_DB;
+﻿USE Test_DB;
 GO
 
 /*
@@ -19,7 +18,6 @@ GO
 /*
 GROUP BY و HAVING بررسی
 */
-
 -- .نمایش تمامی مشتریانی که بیش از 20 سفارش داشته‌اند
 
 SELECT
@@ -34,7 +32,6 @@ GO
 /*
 GROUP BY در WHERE و HAVING بررسی
 */
-
 -- .تعداد سفارشات بیشتر از 70 و سفارشاتی که توسط کارمند شماره 8 ثبت نشده است
 SELECT
 	EmployeeID,
@@ -46,7 +43,6 @@ GROUP BY EmployeeID
 GO
 
 --------------------------------------------------------------------
-
 /*
 فهرست تمامی سفارشات مشتری شماره 71 به تفکیک هر سال 
 .که شامل تعداد سفارش و مجموع هزینه‌های ارسال باشد
@@ -98,7 +94,6 @@ SELECT
 FROM dbo.Customers AS C
 GROUP BY C.City;
 GO
-
 -- 
 SELECT
 	COUNT(City)
@@ -120,12 +115,10 @@ FROM dbo.Customers AS C
 	HAVING COUNT(C.State) > 0;
 GO
 --------------------------------------------------------------------
-
 /*
 GROUP BY ALL
 .فیلتر شده‌اند WHERE نمایش نتایجی که در شرط
 */ 
-
 SELECT 
 	EmployeeID, 
 	COUNT(OrderID) AS Num

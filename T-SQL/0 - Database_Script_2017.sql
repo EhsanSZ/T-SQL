@@ -1,7 +1,6 @@
+--SQl2017
 USE [master]
 GO
-
---SQl2017
 
 DROP DATABASE IF EXISTS Test_DB;
 GO

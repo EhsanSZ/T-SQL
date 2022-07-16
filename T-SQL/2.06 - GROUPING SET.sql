@@ -1,5 +1,4 @@
-﻿
-USE Test_DB;
+﻿USE Test_DB;
 GO
 
 -- تمامی سفارشات درخواست‌شده از مشتری 1 یا 2 به‌تفکیک هر کارمند-مشتری
@@ -34,6 +33,7 @@ FROM dbo.Orders
 	   OR CustomerID = 2
 GROUP BY EmployeeID, YEAR(OrderDate);
 GO
+
 --------------------------------------------------------------------
 
 /*
@@ -57,7 +57,6 @@ GROUP BY GROUPING SETs
 	);
 GO
 /*
-:تذکر مهم
 (Aggregate Columns) آمده‌اند به‌جز SELECT تمامی فیلدهایی که جلو
 شرکت داشته باشند GROUPING SETS می‌بایست به‌نوعی در ترکیب
 */

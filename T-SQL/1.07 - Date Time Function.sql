@@ -1,5 +1,4 @@
-﻿
-USE Test_DB;
+﻿USE Test_DB;
 GO
 
 
@@ -22,20 +21,12 @@ SELECT * FROM dbO.Orders
 	WHERE OrderDate = @d;
 GO
 --------------------------------------------------------------------
-
 /*
-بررسی برخی از توابع تاریخ و زمان
-*/
-
-/*
-GETDATE()
 دسترسی به تاریخ جاری
 */
-
 SELECT GETDATE();
 GO
 --------------------------------------------------------------------
-
 /*
 YEAR/MONTH/DAY/TIME
 تفکیک بخش‌های مختلف یک نوع‌داده از جنس تاریخ
@@ -152,7 +143,6 @@ DATEADD (datepart , number , date)
   millisecond	ms
   microsecond	mcs
   nanosecond	ns
-
 
 date: date\datetime\datetimeoffset\datetime2\smalldatetime\time
 */

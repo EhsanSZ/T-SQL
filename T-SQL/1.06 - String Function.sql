@@ -3,11 +3,6 @@ USE Test_DB;
 GO
 
 /*
-LEN/DATALENGTH Function
-
-LEN ( string_expression )
-DATALENGTH ( expression )
-
 طول رشته و تعداد بایت‌های تخصیص داده‌شده به رشته 
 */
 
@@ -29,25 +24,14 @@ GO
 --------------------------------------------------------------------
 
 /*
-LOWER/UPPER Functions
-
-LOWER ( character_expression )
-UPPER ( character_expression )
-
 کوچک و بزرگ کردن کاراکترهای یک رشته
 */
-
 SELECT UPPER('my sTRing');
 SELECT LOWER('my sTRing');
 GO
 --------------------------------------------------------------------
 
 /*
-RTRIM/LTRIM Functions
-
-RTRIM ( character_expression )
-LTRIM ( character_expression )
-
 حذف فضای خالی از ابتدا یا انتهای رشته
 */
 
@@ -58,11 +42,6 @@ GO
 --------------------------------------------------------------------
 
 /*
-LEFT/RIGHT Function
-
-LEFT ( character_expression , integer_expression ) 
-RIGHT ( character_expression , integer_expression ) 
-
 استخراج بخشی از یک رشته از سمت راست یا چپ آن رشته
 */
 
@@ -75,22 +54,13 @@ GO
 --------------------------------------------------------------------
 
 /*
-SUBSTRING Function
-
-SUBSTRING ( expression , start , length )
-
 استخراج بخشی از یک رشته
 */
-
 SELECT SUBSTRING('My String', 1, 2);
 GO
 --------------------------------------------------------------------
 
 /*
-CHARINDEX Function
-
-CHARINDEX ( expressionToFind , expressionToSearch [ , start_location ] )
-
  اولین موقعیتِ کاراکترِ عین یک عبارت در رشته
 */
 
@@ -105,13 +75,8 @@ GO
 --------------------------------------------------------------------
 
 /*
-PATINDEX Function
-
-PATINDEX ( '%pattern%' , expression )  
-
  اولین موقعیتِ الگو در رشته
 */
-
 SELECT PATINDEX('[0-9]%', '3ab12cd34ef56gh');
 GO
 
@@ -123,10 +88,6 @@ GO
 --------------------------------------------------------------------
 
 /*
-REPLACE Function
-
-REPLACE ( string_expression , string_pattern , string_replacement )
-
 .جایگزین کردن بخشی از زیررشته با رشته موردنظر
 ! رشته می‌تواند تک کاراکتر هم باشد
 */
@@ -135,27 +96,16 @@ SELECT REPLACE('my-string    is-simple!', '-', ' ');
 GO
 
 --------------------------------------------------------------------
-
 /*
-REPLICATE Function
-
-REPLICATE ( string_expression ,integer_expression )
-
 تکرار یک رشته
 */
-
 SELECT REPLICATE('abc', 3);
 GO
 --------------------------------------------------------------------
 
 /*
-STUFF Function
-
-STUFF ( character_expression , start , length , replaceWith_expression ) 
-
 حذف بخشی از رشته و جایگزین کردن رشته موردنظر
 */
-
 SELECT STUFF('Test', 2, 1, N'***');
 GO
 
@@ -168,7 +118,6 @@ GO
 /*
 Concatenation عملیات
 */
-
 -- + با استفاده از  
 SELECT 
 	EmployeeID, FirstName + N'-' + LastName AS FullName
@@ -177,9 +126,6 @@ GO
 
 /*
 CONCAT با استفاده از تابع Concatenation عملیات
-
-CONCAT ( string_value1, string_value2 [, string_valueN ] )
-
 */
 
 SELECT CONCAT('my', ',', 'String', ',', 'is' ,',' , 'simple', '!');
@@ -196,7 +142,7 @@ FROM dbo.Customers;
 GO
 
 /*
-.بازنویسی کوئری بالا را با استفاده از + 
+بازنویسی کوئری بالا + 
 */
 SELECT 
 	CustomerID, State, Region, City,

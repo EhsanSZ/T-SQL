@@ -16,13 +16,13 @@ FROM dbo.Orders
 ORDER BY OrderDate;
 GO
 
+
 -- انتخاب پنج درصد از جدیدترین سفارش‌های ثبت‌شده
 SELECT
 	TOP (5) PERCENT OrderID, OrderDate
 FROM dbo.Orders
 ORDER BY OrderDate DESC;
 GO
-
 
 --  انتخاب جدیدترین پنج سفارش ثبت‌شده با درنظر گرفتن سایر مقادیر برابر
 SELECT

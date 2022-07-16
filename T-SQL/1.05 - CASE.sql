@@ -1,11 +1,4 @@
-﻿
-USE Test_DB;
-GO
-
--- لیست تمامی محصولات
-SELECT
-	ProductID, ProductName, CategoryID
-FROM dbo.Products;
+﻿USE Test_DB;
 GO
 
 -- Simple CASE
@@ -28,10 +21,6 @@ GO
 --------------------------------------------------------------------
 
 -- محصولات براساس قیمت پایه
-SELECT
-	ProductID, UnitPrice
-FROM dbo.OrderDetails;
-GO
 
 -- Searched CASE
 SELECT ProductID, UnitPrice,
@@ -45,7 +34,6 @@ FROM dbo.OrderDetails
 ORDER BY UnitPrice;
 GO
 --------------------------------------------------------------------
-
 
 SELECT 
 	EmployeeID, FirstName, TitleofCourtesy,
@@ -90,7 +78,6 @@ SELECT
 FROM dbo.Customers 
 ORDER BY Region;
 GO
-
 -- .در انتهای فهرست مرتب می‌شوند NULL در مرتب‌سازی نزولی، مقادیر
 SELECT 
 	CustomerID, Region
@@ -105,7 +92,6 @@ FROM dbo.Customers
 ORDER BY 
 	CASE WHEN Region IS NULL THEN 1 ELSE 0 END, Region;
 GO
-
 
 SELECT
 	CustomerID, Region

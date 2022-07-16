@@ -22,6 +22,7 @@ FROM dbo.Orders
 	WHERE CustomerID = 71;
 GO
 
+
 /*
 مشاهده فهرست کارمندانی که با مشتری 71
 .ثبت سفارش داشته‌اند به‌همراه سال ثبت سفارش
@@ -33,7 +34,6 @@ FROM dbo.Orders
 	WHERE CustomerID = 71
 ORDER BY EmployeeID;
 GO
-
 -- بر روی بیش از یک ستون DISTINCT عملیات
 SELECT 
 	 DISTINCT EmployeeID, YEAR(OrderDate) AS OrderYear

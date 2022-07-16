@@ -18,6 +18,7 @@ ORDER BY OrderDate DESC
 OFFSET 0 ROWS FETCH NEXT 10 ROWS ONLY;
 GO
 
+
 /*
 جدیدترین 5 سفارش پس از 10 سفارش اخیر
 یعنی سفارش‌های 11 تا 15
@@ -34,6 +35,7 @@ ORDER BY OrderDate DESC
 OFFSET 10 ROWS FETCH NEXT 5 ROWS ONLY;
 GO
 
+
 /*
 FETCH بدون OFFSET
 نادیده گرفتن 10 سفارش ابتدایی از لیست رکوردها بر اساس نوع مرتب‌سازی و نمایش سایر رکوردها
@@ -45,14 +47,8 @@ ORDER BY OrderDate DESC, OrderID DESC
 OFFSET 10 ROWS;
 GO
 
--- !!!قابل اجرا نیست OFFSET بدون FETCH
-SELECT 
-	OrderID, OrderDate, CustomerID, EmployeeID
-FROM dbo.Orders
-ORDER BY OrderDate DESC, OrderID DESC
-FETCH NEXT 5 ROWS ONLY;
-GO
 
+-- !!!قابل اجرا نیست OFFSET بدون FETCH
 /*
 :نکته مهم
 OFFSET FETCH در PERCENT و WITH TIES عدم پشتیبانی از  

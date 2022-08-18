@@ -1,5 +1,4 @@
-﻿
-USE Test_DB;
+﻿USE Test_DB;
 GO
 
 /*

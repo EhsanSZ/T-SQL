@@ -1,5 +1,4 @@
-﻿
-USE Test_DB;
+﻿USE Test_DB;
 GO
 
 /*
@@ -42,14 +41,6 @@ LEFT JOIN dbo.Orders AS O
 	WHERE O.OrderID IS NULL;
 GO	
 
--- ???
-SELECT
-	C.CustomerID, C.CompanyName, O.OrderID
-FROM dbo.Customers AS C
-LEFT JOIN dbo.Orders AS O
-	ON C.CustomerID = O.CustomerID
-	AND O.OrderID IS NULL;
-GO
 --------------------------------------------------------------------
 
 -- CROSS JOIN عدم تاثیر ترتیب و جابجایی جداول در
@@ -128,9 +119,6 @@ USE Test_DB;
 GO
 
 --.نمایش سفارش به‌همراه جزئیات آن از تمامی مشتریان حتی آن‌هایی که سفارش نداشته‌اند 
-
-USE NikamoozDB;
-GO
 
 SELECT
 	C.CustomerID, C.CompanyName,

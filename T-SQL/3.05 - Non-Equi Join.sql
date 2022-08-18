@@ -1,6 +1,5 @@
 ﻿USE Test_DB;
 GO
-
 /*
 Non-Equi Join
 */

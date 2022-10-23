@@ -1,57 +1,13 @@
 ﻿USE Test_DB;
 GO
 
-/*
-
-CREATE  VIEW  view_name
-AS 
-SELECT_statement;
-
-*/
-
--- تعداد سفارشات هر شرکت
-SELECT
-	C.CompanyName, C.CustomerID,
-	COUNT(O.OrderID) AS Num
-FROM dbo.Customers AS C 
-LEFT JOIN dbo.Orders AS O
-	ON C.CustomerID = O.CustomerID
-GROUP BY C.CompanyName, C.CustomerID;
-GO
-
--- تعداد سفارشات هر شرکت
-SELECT
-	C.CompanyName, C.City,
-	(SELECT COUNT(O.OrderID) FROM dbo.Orders AS O 
-		WHERE C.CustomerID = O.CustomerID) AS Num
-FROM dbo.Customers AS C;
-GO
-
--- تعداد سفارشات شرکت‌های تهران
-SELECT
-	C.CompanyName, C.City,
-	(SELECT COUNT(O.OrderID) FROM dbo.Orders AS O 
-		WHERE C.CustomerID = O.CustomerID) AS Num
-FROM dbo.Customers AS C
-	 WHERE C.City= N'تهران';
-GO
-
--- تعداد سفارشات شرکت‌های اصفهان
-SELECT
-	C.CompanyName, C.City,
-	(SELECT COUNT(O.OrderID) FROM dbo.Orders AS O 
-		WHERE C.CustomerID = O.CustomerID) AS Num
-FROM dbo.Customers AS C
-	 WHERE C.City= N'اصفهان';
-GO
-
 -- VIEW بررسی وجود
 DROP VIEW IF EXISTS dbo.Company_List;
 GO
 
 /*
  از تمامی سفارشات شرکت‌ها VIEW ایجاد
-!!!الزامات سه‌گانه رعایت شود
+الزامات سه‌گانه رعایت شود
 */
 CREATE VIEW dbo.Company_List
 AS
@@ -71,10 +27,6 @@ SELECT * FROM dbo.Company_List AS CL
 	WHERE CL.City = N'تهران';
 GO
 
--- VIEW نمایش مشتریان اصفهانی با استفاده از
-SELECT * FROM dbo.Company_List AS CL
-	WHERE CL.City = N'اصفهان';
-GO
 --------------------------------------------------------------------
 
 /* 

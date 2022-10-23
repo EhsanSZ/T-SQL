@@ -22,7 +22,7 @@ WHERE در بخش Subquery نوشتن کوئری بالا با استفاده ا
 کوئری بیرونی SELECT به‌دلیل این‌که در بخش
 قرار است از هر دو جدول فیلدی خوانده شود
 .کوئری بیرونی نوشت WHERE را در بخش Subquery پس نمی‌توان
-توجه داشته باشید که می‌خواهیم این کوئری صرفا
+توجه داشته باش که می‌خواهیم این کوئری صرفا
 .نوشته شود Subquery با یک
 */
 
@@ -70,16 +70,6 @@ FROM dbo.Customers AS C;
 GO
 
 -- از استراتژی 2 WHERE در بخش Subquery عدم استفاده از نتایج
-SELECT
-	C.CompanyName,
-	(SELECT COUNT(O.OrderID) FROM dbo.Orders AS O
-		WHERE C.CustomerID = O.CustomerID
-		HAVING COUNT(O.OrderID) > 10) AS Num
-FROM dbo.Customers AS C
-	WHERE Num IS NOT NULL;
-GO
-
--- رفع مشکل استراتژی 2
 SELECT
 	C.CompanyName,
 	(SELECT COUNT(O.OrderID) FROM dbo.Orders AS O
@@ -267,19 +257,6 @@ FROM Sales.SalesOrderHeader AS SOH) AS Tmp
 	WHERE TMP.Num > 5;
 GO
 
-USE Test_DB;
-GO
-
--- ???
-SELECT
-	O.CustomerID,
-	COUNT(O.OrderID) AS Num
-FROM dbo.Orders AS O
-	WHERE EXISTS (SELECT 1 FROM dbo.OrderDetails AS OD
-					WHERE OD.OrderID = O.OrderID
-					HAVING COUNT(OD.OrderID) > 5)
-GROUP BY O.CustomerID;
-GO
 --------------------------------------------------------------------
 
 /*

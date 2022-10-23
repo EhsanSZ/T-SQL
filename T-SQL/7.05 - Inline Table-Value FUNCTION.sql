@@ -6,17 +6,6 @@ GO
 Inline Table-Value FUNCTION
 */
 
---CREATE FUNCTION Statement (Inline Table Valued Function)
--- Parameterized View
-/*
-CREATE FUNCTION  function_name 
-    ( [ { @parameter_name [AS] scalar_parameter_data_type [ = default ] } [ ,...n ] ] ) 
-RETURNS TABLE 
-[ WITH < function_option > [ [,] ...n ] ] 
-[ AS ] 
-RETURN [ ( ] select-stmt [ ) ] 
-*/
-
 DROP VIEW IF EXISTS dbo.Customers_Info;
 GO
 

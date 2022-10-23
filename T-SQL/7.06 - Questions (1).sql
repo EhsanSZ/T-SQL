@@ -14,31 +14,7 @@ Subquery
 Outer Query: Orders
 Subquery: Customers
 */
-SELECT
-	(SELECT C.City FROM dbo.Customers AS C
-		WHERE C.CustomerID = O.CustomerID
-		AND C.City IN(N'تهران',N'شیراز',N'اصفهان')) AS City,
-	COUNT(O.OrderID) AS Num
-FROM dbo.Orders AS O
-GROUP BY O.CustomerID;
-GO
 
-/*
-Subquery
-
-Outer Query: Customers
-Subquery: Orders
-*/
-SELECT
-	C.City,
-	(SELECT COUNT(O.OrderID) FROM dbo.Orders AS O
-		WHERE O.CustomerID = C.CustomerID) AS Num
-FROM dbo.Customers AS C
-	WHERE C.City IN(N'تهران',N'شیراز',N'اصفهان')
-GROUP BY C.City,C.CustomerID;
-GO
-
--- اصلاح روش بالا
 SELECT
 	C.City,
 	(SELECT COUNT(O.OrderID) FROM dbo.Orders AS O
@@ -82,7 +58,6 @@ AS
 		WHERE C.City IN(N'تهران',N'شیراز',N'اصفهان')
 	GROUP BY C.City,C.CustomerID
 )
-
 
 SELECT
 	City, SUM(Num) AS Num

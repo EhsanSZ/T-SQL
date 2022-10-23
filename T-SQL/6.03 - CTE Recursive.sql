@@ -3,15 +3,6 @@ GO
 
 /*
 CTE Recutsive:
-
-WITH <CTE_Name> [(<Column_List>)]
-AS
-(
-	<Anchor_Member>
-	UNION ALL
-	<Recursive_Member>
-)
-<Outer_Query_Against_CTE>;
 */
 
 

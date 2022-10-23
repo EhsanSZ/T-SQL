@@ -4,15 +4,6 @@ GO
 
 /*
 Scalar-Value FUNCTION
-
-CREATE FUNCTION FUNCTION_Name
-	({@Parameter [AS] type[=default]}[,...n])
-	RETURNS Type
-AS
-BEGIN
-	Function_Body
-	RETURN Expression
-END
 */
 
 DROP FUNCTION IF EXISTS dbo.Abbreviation;

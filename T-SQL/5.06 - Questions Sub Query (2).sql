@@ -8,56 +8,6 @@ Exersice 01
 .اما در سال 2016 هنوز درخواست سفارشی نداشته‌اند
 */
 
--- .همه مشتریانی که در سال 2015 ثبت‌سفارش داشته‌اند
-SELECT
-	C.CompanyName, C.CustomerID
-FROM dbo.Customers AS C
-	WHERE EXISTS (SELECT 1 FROM dbo.Orders AS O
-					WHERE O.CustomerID = C.CustomerID
-					AND YEAR(O.OrderDate) = 2015);
-GO
-
--- .همه مشتریانی که در سال 2016 ثبت‌سفارش داشته‌اند
-SELECT
-	C.CompanyName, C.CustomerID
-FROM dbo.Customers AS C
-	WHERE EXISTS (SELECT 1 FROM dbo.Orders AS O
-					WHERE O.CustomerID = C.CustomerID
-					AND YEAR(O.OrderDate) = 2016);
-GO
-
-/*
-Set Operator های تنبل و استفاده از Developer رفتار
-*/
-SELECT
-	C.CompanyName, C.CustomerID
-FROM dbo.Customers AS C
-	WHERE EXISTS (SELECT 1 FROM dbo.Orders AS O
-					WHERE O.CustomerID = C.CustomerID
-					AND YEAR(O.OrderDate) = 2015)
-
-EXCEPT
-
-SELECT
-	C.CompanyName, C.CustomerID
-FROM dbo.Customers AS C
-	WHERE EXISTS (SELECT 1 FROM dbo.Orders AS O
-					WHERE O.CustomerID = C.CustomerID
-					AND YEAR(O.OrderDate) = 2016);
-GO
-
-
--- ???
-SELECT
-	(SELECT C.CompanyName FROM dbo.Customers AS C
-		WHERE C.CustomerID = O.CustomerID) AS CompanyName,
-	O.CustomerID
-FROM dbo.Orders AS O
-	WHERE YEAR(O.OrderDate) = 2015
-	AND YEAR(O.OrderDate) <> 2016
-GROUP BY O.CustomerID;
-GO
-
 /*
 Subquery (EXISTS)
 

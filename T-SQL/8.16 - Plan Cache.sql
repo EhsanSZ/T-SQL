@@ -2,6 +2,7 @@
 GO
 
 -- Plan Cache مربوط به Cache پاک کردن
+-- تو سرور های عملیاتی این کارو نکن خطرناکه
 DBCC FREEPROCCACHE;
 GO
 

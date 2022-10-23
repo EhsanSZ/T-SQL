@@ -4,13 +4,6 @@ GO
 
 /*
 CTE Non-Recursive:
-
-WITH <CTE_Name> [(<Column_List>)]
-AS
-(
-	<Inner_Query_Defining_CTE> -- باید دارای الزامات سه گانه باشد
-)
-<Outer_Query_Against_CTE>;
 */
 
 -- Derived Table فهرست کد و نام شرکت مشتریان تهرانی با استفاده از
@@ -23,17 +16,7 @@ FROM (SELECT
 GO
 
 -- Derived Table عدم استفاده مجدد از
-SELECT
-	TC.CompanyName
-FROM (SELECT
-		C.CustomerID, C.CompanyName
-	  FROM dbo.Customers AS C
-		WHERE C.State = N'تهران') AS TC
-JOIN TC AS TC1
-	ON TC.CustomerID = TC1.CustomerID;
-GO
 
--- Derived Table نمونه‌سازی مجدد با استفاده از
 SELECT
 	TC1.CompanyName
 FROM (SELECT
@@ -126,28 +109,6 @@ FROM dbo.Orders AS O1
 GROUP BY YEAR(O1.OrderDate);
 GO
 
-SELECT
-	YEAR(O1.OrderDate) AS OrderYear,
-	COUNT(DISTINCT O1.CustomerID) AS Cust_Num,
-	YEAR(O2.OrderDate) AS OrderYear,
-	COUNT(DISTINCT O2.CustomerID) AS Cust_Num
-FROM dbo.Orders AS O1
-JOIN dbo.Orders AS O2
-	ON YEAR(O1.OrderDate) = YEAR(O2.OrderDate)
-GROUP BY YEAR(O1.OrderDate), YEAR(O2.OrderDate);
-GO
-
--- ON کوئری بالا با تغییر در بخش
-SELECT
-	YEAR(O1.OrderDate) AS OrderYear,
-	COUNT(DISTINCT O1.CustomerID) AS Cust_Num,
-	YEAR(O2.OrderDate) AS OrderYear,
-	COUNT(DISTINCT O2.CustomerID) AS Cust_Num
-FROM dbo.Orders AS O1
-JOIN dbo.Orders AS O2
-	ON YEAR(O1.OrderDate) = YEAR(O2.OrderDate) + 1
-GROUP BY YEAR(O1.OrderDate), YEAR(O2.OrderDate);
-GO
 
 -- JOIN  با استفاده از
 SELECT
@@ -218,18 +179,6 @@ GO
 
 /*
 تودرتو CTE
-
-WITH <CTE_Name1> [(<column_list>)]
-AS
-(
-	<inner_query_defining_CTE>
-),
-	<CTE_Name2> [(<column_list>)]
-AS
-(
-	<inner_query_defining_CTE>
-)
-	<outer_query_against_CTE>;
 */
 
 -- تودرتو CTE  با استفاده از

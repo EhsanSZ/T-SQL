@@ -6,7 +6,6 @@ GO
 Exersice 01
 .فهرست شرکت‌هایی که بیش از 10 سفارش درخواست داشته‌اند
 */
-
 /*
 JOIN
 */
@@ -49,7 +48,6 @@ FROM dbo.Customers AS C
 							HAVING COUNT(O.OrderID) > 10);
 GO
 
-
 /*
 Subquery (EXISTS)
 
@@ -78,7 +76,6 @@ FROM dbo.Customers AS C
 						   GROUP BY O.CustomerID
 							HAVING COUNT(O.OrderID) > 10);
 GO
-
 
 /*
 Subquery (SELECT)
@@ -130,17 +127,6 @@ LEFT JOIN dbo.Orders AS O
 GROUP BY C.CompanyName;
 GO
 
--- ???
-SELECT
-	C.CompanyName,
-	COUNT(O.OrderID) AS Num
-FROM dbo.Customers AS C
-LEFT JOIN dbo.Orders AS O
-	ON C.CustomerID = O.CustomerID
-	AND C.State = N'زنجان'
-GROUP BY C.CompanyName;
-GO
-
 /*
 Subquery (SELECT)
 
@@ -153,25 +139,6 @@ SELECT--In Class
 		WHERE O.CustomerID = C.CustomerID) AS Num
 FROM dbo.Customers AS C
 	WHERE C.State = N'زنجان';
-GO
-
-
--- ???
-SELECT
-	C.CompanyName,
-	(SELECT COUNT(*) FROM dbo.Orders AS O
-		WHERE O.CustomerID = C.CustomerID) AS Num
-FROM dbo.Customers AS C
-	WHERE C.State = N'زنجان';
-GO
-
--- ???
-SELECT
-	C.CompanyName, 
-	(SELECT COUNT(OrderID) FROM dbo.Orders AS O 
-		WHERE O.CustomerID = C.CustomerID
-		AND C.State = N'زنجان') AS Num
-FROM dbo.Customers AS C;
 GO
 
 
@@ -198,22 +165,6 @@ Exersice 03
 
 -- میانگین قیمت واحد تمامی محصولات
 SELECT AVG(UnitPrice) FROM dbo.Products;
-GO
-
--- ???
-SELECT
-	ProductID, UnitPrice
-FROM dbo.Products
-GROUP BY ProductID
-	HAVING UnitPrice >= AVG(UnitPrice);
-GO
-
--- ???
-SELECT
-	ProductID, UnitPrice
-FROM dbo.Products
-GROUP BY ProductID, UnitPrice
-	HAVING UnitPrice >= AVG(UnitPrice);
 GO
 
 -- Subquery (WHERE)
@@ -247,14 +198,6 @@ GO
 Exersice 04
 .مشخصات کارمندی که تا به امروز کمترین تعداد ثبتِ سفارش را داشته است
 */
-
--- تعداد سفارشات ثبت‌شده توسط هر کارمند
-SELECT
-	EmployeeID,
-	COUNT(OrderID) AS Num
-FROM dbo.Orders
-GROUP BY EmployeeID;
-GO
 
 -- .کارمندانی که کمترین ثبت‌سفارش داشته‌اند
 SELECT
@@ -291,26 +234,6 @@ FROM dbo.Employees AS E
 						   GROUP BY O.EmployeeID
 						   ORDER BY COUNT(O.OrderID));
 GO
-
-
-/*
-Subquery (WHERE)
-
-Outer Query: Employees
-Subquery: Orders
-
-روش خطرناک
-*/
-SELECT--In Class
-	EmployeeID, FirstName, LastName
-FROM dbo.Employees
-	WHERE EmployeeID = (SELECT
-							TOP (1) WITH TIES EmployeeID 
-						FROM dbo.Orders
-						GROUP BY EmployeeID
-						ORDER BY COUNT(OrderID));
-GO
-
 
 /*
 Subquery (SELECT)
